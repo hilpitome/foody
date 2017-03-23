@@ -5,12 +5,13 @@ package com.example.hilary.foody;
  */
 
 public class FoodPost {
-
+    int imageId;
     String subheading;
     String txtFooter;
 
-    FoodPost(String subheading, String txtFooter){
+    FoodPost(String subheading, String txtFooter, int imageId){
         this.subheading = subheading;
         this.txtFooter = txtFooter;
+        this.imageId = imageId;
     }
 }

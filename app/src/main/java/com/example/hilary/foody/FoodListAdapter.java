@@ -1,6 +1,7 @@
 package com.example.hilary.foody;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,9 +31,11 @@ import java.util.ArrayList;
             public ImageView foodPhoto;
             public TextView subheading;
             public TextView txtFooter;
+            public CardView cv;
 
             public ViewHolder(View v) {
                 super(v);
+                cv = (CardView)itemView.findViewById(R.id.cv);
                 foodPhoto = (ImageView) v.findViewById(R.id.foodPhoto);
                 subheading = (TextView) v.findViewById(R.id.subheading);
                 txtFooter = (TextView) v.findViewById(R.id.description);
@@ -59,9 +62,11 @@ import java.util.ArrayList;
         public void onBindViewHolder(ViewHolder holder, int position) {
             // - get element from your dataset at this position
             // - replace the contents of the view with that element
+            holder.foodPhoto.setImageResource(mDataset.get(position).imageId);
             holder.subheading.setText(mDataset.get(position).subheading);
             holder.txtFooter.setText(mDataset.get(position).txtFooter);
         }
+
 
         // Return the size of your dataset (invoked by the layout manager)
         @Override
