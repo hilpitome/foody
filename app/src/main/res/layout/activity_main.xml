@@ -8,10 +8,39 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.hilary.foody.MainActivity">
-
+    tools:context="com.example.hilary.foody.MainActivity"
+    >
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/condition"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+
+
+        />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentLeft="true"
+        android:id="@+id/sunny"
+        android:layout_below="@+id/condition"
+        android:layout_marginTop="60dp"
+        android:text="sunny"
+       />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:id="@+id/foggy"
+        android:layout_below="@+id/condition"
+        android:layout_marginTop="60dp"
+        android:text="foogy"
+        />
+
+
+
 </RelativeLayout>
