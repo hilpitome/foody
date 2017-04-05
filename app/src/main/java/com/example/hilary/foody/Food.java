@@ -10,14 +10,16 @@ public class Food {
     String title;
     String description;
     int price;
-    DatabaseReference uniqueId;
+    String imageUrl;
+
     public Food(){
 
     }
-    public Food(String title, String description, int price){
+    public Food(String title, String description, int price, String imageUrl){
         this.title = title;
         this.description =  description;
         this.price = price;
+        this.imageUrl = imageUrl;
     }
 
     public int getPrice() {
@@ -43,8 +45,12 @@ public class Food {
     public void setPrice(int price) {
         this.price = price;
     }
-
-    public void setUniqueId(DatabaseReference uniqueId){
-        this.uniqueId = uniqueId;
+    public String getImageUrl(){
+        return imageUrl;
     }
+    public  void setImageUrl(String imageUrl){
+        this.imageUrl = imageUrl;
+    }
+
+
 }

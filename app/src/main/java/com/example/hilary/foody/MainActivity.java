@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> mAdapterKeys;
     RecyclerView mRecyclerView;
     MyFirebaseAdapter mMyAdapter;
+    View mProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +45,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         title = (TextView) findViewById(R.id.title);
         description = (TextView) findViewById(R.id.description);
-        handleInstanceState(savedInstanceState);
+        mProgressBar = findViewById(R.id.progressBar);
 
+        handleInstanceState(savedInstanceState);
         setupFirebase();
         setupRecyclerview();
     }
@@ -55,7 +57,19 @@ public class MainActivity extends AppCompatActivity {
 
     private void setupFirebase() {
         mQuery = mFoodReference.limitToLast(10);
+        mQuery.addValueEventListener(new ValueEventListener() {
 
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                mProgressBar.setVisibility(View.GONE); //Remove progress bar when data has been fully downloaded
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+        });
     }
     private void handleInstanceState(Bundle savedInstanceState) {
 
