@@ -15,7 +15,7 @@
       },
       "oauth_client": [
         {
-          "client_id": "12691391191-hruc552ugundakbir8lri9kmijnl31c7.apps.googleusercontent.com",
+          "client_id": "12691391191-l9n429iks7bvuhmgec6j6b7hpfoll6u5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.hilary.foody",
@@ -23,13 +23,13 @@
           }
         },
         {
-          "client_id": "12691391191-ofc093jls8bmnf2fte984fhe4eap4ub0.apps.googleusercontent.com",
+          "client_id": "12691391191-1vmcn2hesk32cocqap0i92u8vkf38duh.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDBjq1SeKYeVP4qy_Sud0Mlm3WdJjNglhE"
+          "current_key": "AIzaSyAhzbrbMD8PFr-d2nt7ImCFMJMyQoBEaxE"
         }
       ],
       "services": {
@@ -40,41 +40,10 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "12691391191-ofc093jls8bmnf2fte984fhe4eap4ub0.apps.googleusercontent.com",
+              "client_id": "12691391191-1vmcn2hesk32cocqap0i92u8vkf38duh.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
-        },
-        "ads_service": {
-          "status": 2
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:12691391191:android:cfcb0e3cd372617c",
-        "android_client_info": {
-          "package_name": "com.example.hilary.foodycook"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "12691391191-ofc093jls8bmnf2fte984fhe4eap4ub0.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyDBjq1SeKYeVP4qy_Sud0Mlm3WdJjNglhE"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2
