@@ -269,7 +269,10 @@ public class SignUpAcitivity extends AppCompatActivity implements GoogleApiClien
         }
     }
 
-
+    public void signIn(){
+        Intent i = new Intent(SignUpAcitivity.this, SignInActivity.class);
+        startActivity(i);
+    }
 
     @Override
     public void onClick(View v) {
@@ -279,6 +282,9 @@ public class SignUpAcitivity extends AppCompatActivity implements GoogleApiClien
                 break;
             case R.id.btn_signup:
                 registerWithEmailPassword();
+                break;
+            case R.id.link_login:
+                signIn();
                 break;
 
         }

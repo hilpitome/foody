@@ -120,12 +120,18 @@ public class SignInActivity extends AppCompatActivity implements  View.OnClickLi
         }
     }
 
-
+    public void signUp(){
+        Intent i = new Intent(SignInActivity.this, SignUpAcitivity.class);
+        startActivity(i);
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_LogIn:
                 signIn();
+                break;
+            case R.id.link_register:
+                signUp();
                 break;
 
         }
