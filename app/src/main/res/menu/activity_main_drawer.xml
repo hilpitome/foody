@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+>
+
+
+    <item
+        android:id="@+id/nav_payments"
+        android:title="@string/nav_account_payments" />
+    <item
+        android:id="@+id/nav_account"
+        android:title="@string/nav_account_title" />
+    <item
+        android:id="@+id/nav_help_faq"
+        android:title="@string/nav_help_and_faq_title" />
+
+</menu>

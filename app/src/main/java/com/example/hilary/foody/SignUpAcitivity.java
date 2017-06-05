@@ -10,10 +10,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.hilary.foody.R;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -35,9 +33,8 @@ import com.google.firebase.auth.GoogleAuthProvider;
  * Created by hilary on 4/5/17.
  */
 
-public class SignInAcitivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
+public class SignUpAcitivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
     GoogleApiClient mGoogleApiClient;
-
     private static final int RC_SIGN_IN = 9001;
     private static final String TAG = "GoogleActivity";
 
@@ -51,21 +48,17 @@ public class SignInAcitivity extends AppCompatActivity implements GoogleApiClien
     // [END declare_auth_listener]
 
     ProgressDialog progressDialog;
-    private EditText emailEditTextView;
-    private EditText passwordEditTextView;
-    private Button btnSignUp;
-    private String email;
-    private String password;
+    private EditText emailEditTextView, passwordEditTextView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_in);
+        setContentView(R.layout.activity_sign_up);
         // Views
         emailEditTextView = (EditText) findViewById(R.id.input_email);
-        passwordEditTextView = (EditText) findViewById(R.id.input_email);
-        btnSignUp = (Button) findViewById(R.id.btn_signup);
+        passwordEditTextView = (EditText) findViewById(R.id.input_password);
+        Button btnSignUp = (Button) findViewById(R.id.btn_signup);
 
         btnSignUp.setOnClickListener(this);
 
@@ -183,7 +176,7 @@ public class SignInAcitivity extends AppCompatActivity implements GoogleApiClien
                         // signed in user can be handled in the listener.
                         if (!task.isSuccessful()) {
                             Log.w(TAG, "signInWithCredential", task.getException());
-                            Toast.makeText(SignInAcitivity.this, "Authentication failed.",
+                            Toast.makeText(SignUpAcitivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
 
@@ -191,62 +184,65 @@ public class SignInAcitivity extends AppCompatActivity implements GoogleApiClien
                 });
     }
     public void registerWithEmailPassword(){
-            email = emailEditTextView.getText().toString().trim();
-            password = passwordEditTextView.getText().toString().trim();
-            boolean cancel = false;
-            View focusView = null;
-            // Check for a valid password, if the user entered one.
-            if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-                passwordEditTextView.setError("enter password");
-                focusView = passwordEditTextView;
-                cancel = true;
-            }
+        String email = emailEditTextView.getText().toString().trim();
+        String password = passwordEditTextView.getText().toString().trim();
+
+        View focusView = null;
         // Check for a valid email address.
         if (TextUtils.isEmpty(email)) {
             emailEditTextView.setError("enter email");
             focusView = emailEditTextView;
-            cancel = true;
+            focusView.requestFocus();
+            return;
+
         } else if (!isEmailValid(email)) {
             emailEditTextView.setError("enter valid email");
             focusView = emailEditTextView;
-            cancel = true;
-        }
-
-        if (cancel) {
-            // There was an error; don't attempt login and focus the first
-            // form field with an error.
             focusView.requestFocus();
-        } else {
-            showProgressDialogue("creating user account");
-            mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                // Sign in success, update UI with the signed-in user's information
-                                Log.d(TAG, "createUserWithEmail:success");
-                                FirebaseUser user = mAuth.getCurrentUser();
-                                Toast.makeText(SignInAcitivity.this, user.getUid(),
-                                        Toast.LENGTH_SHORT).show();
-                                //updateUI(user);
-                            } else {
-                                // If sign in fails, display a message to the user.
-                                Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                                Toast.makeText(SignInAcitivity.this, "Authentication failed.",
-                                        Toast.LENGTH_SHORT).show();
-                                //updateUI(null);
-                            }
+            return;
 
-                            // ...
-                        }
-                    });
-            }
         }
+        // Check for a valid password, if the user entered one.
 
-
+        if(!isPasswordValid(password)) {
+            passwordEditTextView.setError("must be more than five characters");
+            focusView = passwordEditTextView;
+            focusView.requestFocus();
+            return;
+        }
+        if(TextUtils.isEmpty(password)) {
+            passwordEditTextView.setError("enter password");
+            focusView = passwordEditTextView;
+            focusView.requestFocus();
+            return;
+        }
+        showProgressDialogue("creating user account");
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(TAG, "createUserWithEmail:success");
+                            removeProgressDialogue();
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            Intent intent = new Intent(SignUpAcitivity.this, MainActivity.class);
+                            startActivity(intent);
+                            //updateUI(user);
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            removeProgressDialogue();
+                            Toast.makeText(SignUpAcitivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                            //updateUI(null);
+                        }
+                    }
+                });
+        }
 
     public  void  showProgressDialogue(String message){
-        progressDialog = new ProgressDialog(SignInAcitivity.this, R.style.AppTheme_Dark_Dialog);
+        progressDialog = new ProgressDialog(SignUpAcitivity.this, R.style.AppTheme_Dark_Dialog);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage(message);
         progressDialog.show();
@@ -266,7 +262,11 @@ public class SignInAcitivity extends AppCompatActivity implements GoogleApiClien
 
     private boolean isPasswordValid(String password) {
 
-        return password.length() > 5;
+        if(password.length() < 6){
+            return false;
+        } else {
+            return true;
+        }
     }
 
 

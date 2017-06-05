@@ -10,4 +10,9 @@
     <string name="sign_out">Sign Out</string>
     <string name="disconnect">Disconnect</string>
     <string name="android_client_id">12691391191-l9n429iks7bvuhmgec6j6b7hpfoll6u5.apps.googleusercontent.com</string>
+    <!--Drawer Menu Titles-->
+
+    <string name="nav_account_payments">Payments</string>
+    <string name="nav_account_title">Account</string>
+    <string name="nav_help_and_faq_title">Help &amp; feedback</string>
 </resources>

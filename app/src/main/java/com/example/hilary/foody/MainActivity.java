@@ -1,16 +1,17 @@
 package com.example.hilary.foody;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.hilary.foody.adapters.MyFirebaseAdapter;
-import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,18 +39,28 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView mRecyclerView;
     MyFirebaseAdapter mMyAdapter;
     View mProgressBar;
+    private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        title = (TextView) findViewById(R.id.title);
-        description = (TextView) findViewById(R.id.description);
-        mProgressBar = findViewById(R.id.progressBar);
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser!= null){
+            title = (TextView) findViewById(R.id.title);
+            description = (TextView) findViewById(R.id.description);
+            mProgressBar = findViewById(R.id.progressBar);
 
-        handleInstanceState(savedInstanceState);
-        setupFirebase();
-        setupRecyclerview();
+            handleInstanceState(savedInstanceState);
+            setupFirebase();
+            setupRecyclerview();
+        } else {
+            Intent i = new Intent(MainActivity.this, SignUpAcitivity.class);
+            startActivity(i);
+        }
+
     }
 
 

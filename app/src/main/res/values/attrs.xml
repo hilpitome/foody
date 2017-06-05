@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LoadFrameLayout">
+        <attr name="emptyView" format="reference" />
+        <attr name="errorView" format="reference" />
+        <attr name="loadingView" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="MaterialBadgeTextView">
+        <attr name="mbtv_backgroundColor" format="color" />
+        <attr name="mbtv_border_width" format="dimension" />
+        <attr name="mbtv_border_color" format="color" />
+        <attr name="mbtv_border_alpha" format="float" />
+        <attr name="mbtv_type" format="enum">
+            <enum name="shadow_gradual" value="1"/>
+            <enum name="shadow_alpha" value="2"/>
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="CustomFontTextView">
+        <attr name="textFont" format="enum">
+            <enum name="Montserrat_Black" value="0" />
+            <enum name="Montserrat_black_italic" value="1" />
+            <enum name="Montserrat_bold" value="2" />
+            <enum name="Montserrat_bold_italic" value="3" />
+            <enum name="Montserrat_extra_bold" value="4" />
+            <enum name="Montserrat_extra_bold_italic" value="5" />
+            <enum name="Montserrat_extra_light" value="6" />
+            <enum name="Montserrat_extra_light_italic" value="7" />
+            <enum name="Montserrat_italic" value="8" />
+            <enum name="Montserrat_light" value="9" />
+            <enum name="Montserrat_light_italic" value="10" />
+            <enum name="Montserrat_medium" value="11" />
+            <enum name="Montserrat_medium_italic" value="12" />
+            <enum name="Montserrat_regular" value="13" />
+            <enum name="Montserrat_semibold" value="14" />
+            <enum name="Montserrat_semibold_italic" value="15" />
+            <enum name="Montserrat_thin" value="16" />
+            <enum name="Montserrat_thin_italic" value="17" />
+        </attr>
+    </declare-styleable>
+</resources>
