@@ -4,15 +4,30 @@
 
     <!-- Sign-in status messages -->
     <string name="signed_in_fmt">Signed in as: %s</string>
-    <string name="signed_in">Signed in</string>
-    <string name="signing_in">Signing in…</string>
-    <string name="signed_out">Signed out</string>
-    <string name="sign_out">Sign Out</string>
     <string name="disconnect">Disconnect</string>
     <string name="android_client_id">12691391191-l9n429iks7bvuhmgec6j6b7hpfoll6u5.apps.googleusercontent.com</string>
     <!--Drawer Menu Titles-->
-
+    <string name="nav_home">Home</string>
+    <string name="sign_out">SignOut</string>
+    <string name="nav_notifications">Notifications</string>
+    <string name="nav_about_us">About Us</string>
     <string name="nav_account_payments">Payments</string>
     <string name="nav_account_title">Account</string>
     <string name="nav_help_and_faq_title">Help &amp; feedback</string>
+    <!--Tool bar titles when navigation menu is selected-->
+    <string-array name="nav_item_activity_titles">
+        <item>Home</item>
+        <item>Notifications</item>
+        <item>About Us</item>
+        <item>Payments</item>
+        <item>Account</item>
+        <item>Help &amp; feedback</item>
+    </string-array>
+    <!-- Filters for the food items -->
+    <string-array name="filters">
+        <item>Latest</item>
+        <item>Breakfast</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
+    </string-array>
 </resources>

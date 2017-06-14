@@ -2,15 +2,29 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
 >
 
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="@string/nav_home" />
+        <item
+            android:id="@+id/nav_account"
+            android:icon="@drawable/ic_settings_black_24dp"
+            android:title="@string/nav_account_title" />
+        <item
+            android:id="@+id/nav_payments"
+            android:icon="@drawable/ic_account_balance_wallet_black_24dp"
+            android:title="@string/nav_account_payments" />
+        <item
+            android:id="@+id/nav_notifications"
+            android:icon="@drawable/ic_notifications_black_24dp"
+            android:title="@string/nav_notifications" />
 
-    <item
-        android:id="@+id/nav_payments"
-        android:title="@string/nav_account_payments" />
-    <item
-        android:id="@+id/nav_account"
-        android:title="@string/nav_account_title" />
-    <item
-        android:id="@+id/nav_help_faq"
-        android:title="@string/nav_help_and_faq_title" />
+        <item
+            android:id="@+id/nav_help_faq"
+            android:icon="@drawable/ic_help_black_24dp"
+            android:title="@string/nav_help_and_faq_title" />
 
 </menu>
+
+
+
