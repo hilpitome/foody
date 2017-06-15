@@ -38,10 +38,10 @@ public class MainActivity extends AppCompatActivity {
     private NavigationView navigationView;
     private DrawerLayout drawer;
     private View navHeader;
-    private ImageView imgNavHeaderBg, imgProfile;
+    private ImageView imgProfile;
     private TextView txtEmail;
     private Toolbar toolbar;
-    private FloatingActionButton fab;
+
 
     private FirebaseAuth mAuth;
     // index to identify current nav menu item
@@ -81,24 +81,15 @@ public class MainActivity extends AppCompatActivity {
             mHandler = new Handler();
             drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
             navigationView = (NavigationView) findViewById(R.id.nav_view);
-            fab = (FloatingActionButton) findViewById(R.id.fab);
 
             // Navigation view header
             navHeader = navigationView.getHeaderView(0);
             txtEmail = (TextView) navHeader.findViewById(R.id.email);
-            imgNavHeaderBg = (ImageView) navHeader.findViewById(R.id.img_header_bg);
             imgProfile = (ImageView) navHeader.findViewById(R.id.img_profile);
 
             // load toolbar titles from string resources
             activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
 
-            fab.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
-                }
-            });
 
             // load nav menu header data
             loadNavHeader();
@@ -160,8 +151,6 @@ public class MainActivity extends AppCompatActivity {
         if (getSupportFragmentManager().findFragmentByTag(CURRENT_TAG) != null) {
             drawer.closeDrawers();
 
-            // show or hide the fab button
-            toggleFab();
             return;
         }
 
@@ -187,8 +176,7 @@ public class MainActivity extends AppCompatActivity {
             mHandler.post(mPendingRunnable);
         }
 
-        // show or hide the fab button
-        toggleFab();
+
 
         //Closing drawer on item click
         drawer.closeDrawers();
@@ -315,12 +303,6 @@ public class MainActivity extends AppCompatActivity {
         super.onBackPressed();
     }
     // show or hide the fab
-    private void toggleFab() {
-        if (navItemIndex == 0)
-            fab.show();
-        else
-            fab.hide();
-    }
 
     public void signOut(){
         mAuth.signOut();
