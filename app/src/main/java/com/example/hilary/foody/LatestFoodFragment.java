@@ -7,6 +7,7 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,7 @@ public class LatestFoodFragment extends Fragment {
     RecyclerView mRecyclerView;
     MyFirebaseAdapter mMyAdapter;
     ProgressDialog mProgressBar;
+    FirebaseAuth mAuth;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -68,7 +70,9 @@ public class LatestFoodFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        Log.e("user", user.getEmail());
         mProgressBar = new ProgressDialog(getActivity());
         handleInstanceState(savedInstanceState);
         setupFirebase();

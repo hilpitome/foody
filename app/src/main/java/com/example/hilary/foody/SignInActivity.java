@@ -8,7 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,11 +28,19 @@ public class SignInActivity extends AppCompatActivity implements  View.OnClickLi
     private String TAG = "SignInActivity";
     ProgressDialog progressDialog;
     private EditText emailEditTextView, passwordEditTextView;
+    private TextView registerTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
+        setContentView(R.layout.activity_sign_in);
+        emailEditTextView = (EditText) findViewById(R.id.input_email);
+        passwordEditTextView = (EditText) findViewById(R.id.input_password);
         mAuth = FirebaseAuth.getInstance();
+        // Set onclick listener on login textview
+        registerTextView = (TextView) findViewById(R.id.link_register);
+        registerTextView.setOnClickListener(this);
+        Button signInButton = (Button) findViewById(R.id.btn_LogIn);
+        signInButton.setOnClickListener(this);
 
     }
 
@@ -76,7 +86,7 @@ public class SignInActivity extends AppCompatActivity implements  View.OnClickLi
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
                             removeProgressDialogue();
-                            FirebaseUser user = mAuth.getCurrentUser();
+
                             Intent i = new Intent(SignInActivity.this, MainActivity.class);
                             startActivity(i);
 

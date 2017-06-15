@@ -63,12 +63,14 @@ public class MainActivity extends AppCompatActivity {
     private boolean shouldLoadHomeFragOnBackPress = true;
     private Handler mHandler;
 
+    FirebaseUser currentUser;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        currentUser = mAuth.getCurrentUser();
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) {
             setSupportActionBar(toolbar);
@@ -122,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void loadNavHeader() {
         // name, website
-        txtEmail.setText("hila@foody.com");
+        txtEmail.setText(currentUser.getEmail());
 
 
 //        // loading header background image
@@ -215,6 +217,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.nav_home:
                         navItemIndex = 0;
                         CURRENT_TAG = TAG_LATEST;
+                        break;
+                    case R.id.nav_sign_out:
+                        signOut();
                         break;
 //                    case R.id.nav_photos:
 //                        navItemIndex = 1;
@@ -315,6 +320,12 @@ public class MainActivity extends AppCompatActivity {
             fab.show();
         else
             fab.hide();
+    }
+
+    public void signOut(){
+        mAuth.signOut();
+        Intent intent = new Intent(this, SignInActivity.class);
+        startActivity(intent);
     }
 
 }

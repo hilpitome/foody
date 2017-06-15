@@ -10,6 +10,7 @@
         android:theme="@style/NoActionBar">
         <activity android:name=".SignUpAcitivity">
         </activity>
+        <activity android:name=".SignInActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

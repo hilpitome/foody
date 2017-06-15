@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -50,6 +51,8 @@ public class SignUpAcitivity extends AppCompatActivity implements GoogleApiClien
     ProgressDialog progressDialog;
     private EditText emailEditTextView, passwordEditTextView;
 
+    private TextView loginTextView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +69,10 @@ public class SignUpAcitivity extends AppCompatActivity implements GoogleApiClien
         SignInButton signInButton = (SignInButton) findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
         signInButton.setOnClickListener(this);
+
+        // Set onclick listener on login textview
+        loginTextView = (TextView) findViewById(R.id.link_login);
+        loginTextView.setOnClickListener(this);
 
         // [START initialize_auth]
         mAuth = FirebaseAuth.getInstance();
